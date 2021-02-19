@@ -18,6 +18,20 @@ packages:
       sha256: 4126d8e2ea49a4acbd30cad46e66068167a1a599032c0ddd8fde607f703c5a23
   original:
     hackage: haskell-dap-0.0.15.0
+- completed:
+    hackage: haskell-debug-adapter-0.0.34.0@sha256:8ac49d8f2cebe66710985468fd5390ef0f98bd6ee89b141840f11140a732e383,6468
+    pantry-tree:
+      size: 2982
+      sha256: 83f05f87fb3e9ac07ba6a618dfd8c7f817455e0884fab15002cd6ec57117c176
+  original:
+    hackage: haskell-debug-adapter-0.0.34.0
+- completed:
+    hackage: BNFC-2.9.0@sha256:1e159b19a338bd4ef8dc47b412cbf59146b9429b2a8389747b0cb2ad7943ade6,9271
+    pantry-tree:
+      size: 8474
+      sha256: 7f98d4c069705861b7c52ad36b51cf8c1718c11c8440e54c9a46a11c62847743
+  original:
+    hackage: BNFC-2.9.0
 snapshots:
 - completed:
     size: 563098

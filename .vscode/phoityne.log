@@ -2,3 +2,7 @@
 2021-02-19 15:59:25.022250995000 [7343(ThreadId 9)] ERROR APP - [CRITICAL] can not get the initial ghci prompt.
 2021-02-19 16:00:40.585637542000 [7571(ThreadId 9)] ERROR APP - [CRITICAL] can not get the initial ghci prompt.
 2021-02-19 16:02:59.048092851000 [8015(ThreadId 9)] ERROR APP - [CRITICAL] can not get the initial ghci prompt.
+2021-02-19 16:42:46.151417782000 [14081(ThreadId 9)] ERROR APP - user error (<getModule> loaded module can not find from path. </home/jacek/jpp/vv/test/Phoityne/Example/MathSpec.hs> [("Lib","/home/jacek/jpp/vv/src/Lib.hs"),("Main","/home/jacek/jpp/vv/app/Main.hs")])
+2021-02-19 16:48:02.776364928000 [16110(ThreadId 9)] ERROR APP - user error (<getModule> loaded module can not find from path. </home/jacek/jpp/vv/test/Phoityne/Example/MathSpec.hs> [("Lib","/home/jacek/jpp/vv/src/Lib.hs"),("Main","/home/jacek/jpp/vv/app/Main.hs")])
+2021-02-19 16:48:10.526674222000 [16166(ThreadId 9)] ERROR APP - user error (<getModule> loaded module can not find from path. </home/jacek/jpp/vv/test/Phoityne/Example/MathSpec.hs> [("Lib","/home/jacek/jpp/vv/src/Lib.hs"),("Main","/home/jacek/jpp/vv/app/Main.hs")])
+2021-02-19 16:48:29.749228928000 [16271(ThreadId 9)] ERROR APP - user error (<getModule> loaded module can not find from path. </home/jacek/jpp/vv/test/Phoityne/Example/MathSpec.hs> [("Lib","/home/jacek/jpp/vv/src/Lib.hs"),("Main","/home/jacek/jpp/vv/app/Main.hs")])

@@ -43,7 +43,8 @@ packages:
 extra-deps:
   - ghci-dap-0.0.15.0
   - haskell-dap-0.0.15.0
-
+  - haskell-debug-adapter-0.0.34.0
+  - BNFC-2.9.0
 # Override default flag values for local packages and extra-deps
 # flags: {}
 
