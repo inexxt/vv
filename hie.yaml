@@ -1,0 +1,10 @@
+cradle:
+  stack:
+    - path: "./app/"
+      component: "vv:exe:vv-exe"
+    - path: "./src/"
+      component: "vv:lib"
+    - path: "./test/"
+      component: "vv:test:vv-test"
+    - path: "./Setup.hs"
+      component: "Cabal"

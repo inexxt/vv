@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 69dd4d22fd6fc8c969ebd53d6efbd123d603be081b28191e883a955a7a564572
+-- hash: 192107f994fed26d5ba11863c323f2f3e3da61bc499007098dee926f1dbde2c6
 
 name:           vv
 version:        0.1.0.0
@@ -28,6 +28,7 @@ source-repository head
 library
   exposed-modules:
       Lib
+      Phoityne.Example.Math
   other-modules:
       Paths_vv
   hs-source-dirs:
@@ -52,11 +53,14 @@ test-suite vv-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      Phoityne.Example.MathSpec
+      SpecHelper
       Paths_vv
   hs-source-dirs:
       test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , hspec
     , vv
   default-language: Haskell2010
