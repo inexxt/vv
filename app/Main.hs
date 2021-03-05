@@ -1,7 +1,7 @@
 module Main where
 
 import Lib
-import Lambda.Untyped
+import Lambda.SimplyTyped
 
 main :: IO ()
-main = print $ betaEq (app2 plus one two) three
+main = print $ typecheck initialEnv (app2 plus one two)

@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 74176c86588114b200e84edbefd625f5249f9ce3c2ea19e36a6c74bde940c19d
+-- hash: 70159cc36c061632d2ddd97a611eee540c2e97b6576e180df7b9004cfa47859c
 
 name:           vv
 version:        0.1.0.0
@@ -27,6 +27,7 @@ source-repository head
 
 library
   exposed-modules:
+      Lambda.SimplyTyped
       Lambda.Untyped
       Lib
   other-modules:
