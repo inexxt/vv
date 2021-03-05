@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 70159cc36c061632d2ddd97a611eee540c2e97b6576e180df7b9004cfa47859c
+-- hash: 9fc59f0253b68cef5d78686c9eba8a839e8da6adeb0ff98118b3de872989aed2
 
 name:           vv
 version:        0.1.0.0
@@ -54,6 +54,7 @@ test-suite vv-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      Lambda.SimplyTypedSpec
       Lambda.UntypedSpec
       SpecHelper
       Paths_vv

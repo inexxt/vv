@@ -1,7 +1,8 @@
 module SpecHelper
     ( module Test.Hspec
-    , module Lambda.Untyped
+    -- , module Lambda.Untyped
     ) where
 
 import Test.Hspec
-import Lambda.Untyped
+-- import Lambda.Untyped
+-- import Lambda.SimplyTyped

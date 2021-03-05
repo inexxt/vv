@@ -1,12 +1,13 @@
 module Lambda.UntypedSpec where
 
 import SpecHelper
+import Lambda.Untyped
 
 spec :: Spec
 spec = 
-    describe "sumGs" $ do
-        context "with two three" $
-          it "should be five" $
+    describe "plus" $ do
+        context "with one two" $
+          it "should be three" $
             betaEq (app2 plus one two) three `shouldBe` True
 
 main :: IO ()

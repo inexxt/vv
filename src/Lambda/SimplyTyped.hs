@@ -13,7 +13,9 @@ module Lambda.SimplyTyped
     plus,
     app2,
     typecheck,
-    initialEnv
+    initialEnv,
+    base,
+    arrow
   )
 where
 
@@ -23,6 +25,12 @@ import Data.List
 
 type Name = String
 data Type = Base | Arrow Type Type deriving (Eq, Read, Show)
+
+base :: Type
+base = Base
+
+arrow :: Type -> Type -> Type
+arrow t1 t2 = Arrow t1 t2
 
 data Expr
   = Var Name
