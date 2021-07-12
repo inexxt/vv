@@ -19,7 +19,7 @@ In the unlikely case the standard library cannot be found (e.g. missing import e
 Syntax highlighting scheme for the `.vv` and `.vvm` files is provided for Sublime Text 3. The editor can be downloaded for free from https://www.sublimetext.com/3. To install the highlighting, simply copy the contents of `syntax_highlighting` folder into `~/.config/sublime-text-3/Packages/vv/VV.sublime-syntax`.
 
 Highlighting massively improves readability, as shown beloww, so I really recommend enabling it.
-![code](https://github.com/inexxt/JPP/blob/master/vv/code.png?raw=true)
+![code](https://github.com/inexxt/vv/blob/master/code.png?raw=true)
 
 ## Reading the output
 
@@ -66,10 +66,10 @@ There's a few things that don't work (yet, or in general):
         
         y : M ;
         y = x ;;
-```
-    I want to explicitly mention that this does not mean that the typechecker doesn't work! 
-    It does, and it infers the type of `y` correctly, but it just doesn't check that it is indeed equal to the one specified by the user.
-    This is because of some implementation choices that made the refactor time-consuming and I didn't finish.
+     ```
+     I want to explicitly mention that this does not mean that the typechecker doesn't work! 
+     It does, and it infers the type of `y` correctly, but it just doesn't check that it is indeed equal to the one specified by the user.
+     This is because of some implementation choices that made the refactor time-consuming and I didn't finish.
   
   2) There are no line numbers when showing errors in the code (except for parsing). 
      This is because the substitution process in global, so it is very difficult to pinpoint the location of the error (I can explain more in person).
