@@ -18,7 +18,7 @@ In the unlikely case the standard library cannot be found (e.g. missing import e
 
 Syntax highlighting scheme for the `.vv` and `.vvm` files is provided for Sublime Text 3. The editor can be downloaded for free from https://www.sublimetext.com/3. To install the highlighting, simply copy the contents of `syntax_highlighting` folder into `~/.config/sublime-text-3/Packages/vv/VV.sublime-syntax`.
 
-Highlighting massively improves readability, as shown beloww, so I really recommend enabling it.
+Highlighting massively improves readability, as shown below, so I really recommend enabling it.
 ![code](https://github.com/inexxt/vv/blob/master/code.png?raw=true)
 
 ## Reading the output
@@ -77,3 +77,6 @@ There's a few things that don't work (yet, or in general):
   3) The `Union` type might not work correctly, I didn't have time to test it.
   
   4) I didn't finish working on the grammar, so there are multiple undocumented conflicts.
+
+## Reference
+The code is heavily inspired by a series of articles on dependent types by https://augustss.blogspot.com/.
