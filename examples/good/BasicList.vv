@@ -1,0 +1,26 @@
+-- A program demonstrating the basics of lists creation and mapping
+
+import Type ;;
+import Nat ;;
+import List ;;
+import NConst ;;
+
+one : NatT ;
+one = succ zero ;;
+
+two : NatT ;
+two = succ one ;;
+
+-- this is a list [0, 1, 2]
+exampleList : ListT NatT ;
+exampleList = cons NatT (cons NatT (cons NatT (null NatT) zero) one) two ;;
+
+-- We can't print lexampleList nicely, because we are using Church encoding for natural numbers
+-- So the list has to be "concretized" by evaluating NatT on assumed (abstract) values above
+-- We do that by mapping over it and "concretizing" each value (for details, see EightyOne.vv example)
+exampleListp : ListT N ;
+exampleListp = map NatT N (Lam (nt : NatT) (nt N Z S)) exampleList ;;
+
+-- Now, we can in turn concretize the list itself using assumed values L, and c
+main : N ;
+main = exampleListp LL e c ;;

@@ -1,0 +1,25 @@
+-- A program demonstrating the use of natural numbers equality
+
+import Type ;;
+import Bool ;;
+import Nat ;;
+import Arith ;;
+import Pair ;;
+
+
+one : NatT ;
+one = succ zero ;;
+
+three : NatT ;
+three = succ (succ one) ;;
+
+assume B : Type ;;
+assume TOP : B ;;
+assume BOT : B ;;
+
+main : B ;
+main = testEq (pred three) (add one one) B TOP BOT ;;
+
+-- This would also work
+-- main : B ;
+-- main = (if BoolT (testEq (pred three) (add one one)) true false) B TOP BOT ;;

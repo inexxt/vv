@@ -1,0 +1,28 @@
+-- A program demonstrating the use of product type
+-- 'pair' produces a pair of two values 
+-- here, we show it on the example of a product type (Nat x Bool)
+-- and in this type, value (2, true)
+-- We project to the right component by using 'right' eliminator
+-- In our system, 'true' is itself a function returning the first component
+-- So to verify, we run it on the values TOP BOT, getting TOP as predicted
+
+import Type ;;
+import Bool ;;
+import Nat ;;
+import Arith ;;
+import Pair ;;
+import NConst ;;
+
+one : NatT ;
+one = succ zero ;;
+
+two : NatT ;
+two = succ (succ zero) ;;
+
+-- defininion of an abstract boolean type
+assume B : Type ;; -- bolean type
+assume TOP : B ;; -- True value
+assume BOT : B ;; -- False value
+
+main : N ;
+main = (right NatT BoolT (pair NatT BoolT two true)) B TOP BOT ;;

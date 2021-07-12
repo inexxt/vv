@@ -1,0 +1,21 @@
+-- Standard library file defining binary product type, via Church encoding
+
+import Type ;;
+
+-- Type defintion
+PairT : (U 0) -> (U 0) -> (U 1) ;
+PairT = Lam (TL : Type) (Lam (TR : Type) ((TL -> TR -> Type) -> TL -> TR -> Type)) ;;
+
+-- Introduction rule
+pair : Pi (TL : Type) (Pi (TR : Type) (Pi (l : TL) (Pi (r : TR) (Pi (f : (TL -> TR -> Type)) (PairT TL TR))))) ;
+pair (TL : Type) (TR : Type) (l : TL) (r : TR) (f : (TL -> TR -> Type)) = f l r ;;
+
+-- Elimination rule
+left : Pi (TL : Type) (Pi (TR : Type) ((PairT TL TR) -> TL -> TR -> TL)) ;
+left (TL : Type) (TR : Type) (pp : PairT TL TR) =
+    pp (Lam (l : TL) (Lam (r : TR) l)) ;;
+
+-- Elimination rule
+right : Pi (TL : Type) (Pi (TR : Type) ((PairT TL TR) -> TL -> TR -> TL)) ;
+right (TL : Type) (TR : Type) (pp : PairT TL TR) =
+    pp (Lam (l : TL) (Lam (r : TR) r)) ;;

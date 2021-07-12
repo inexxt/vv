@@ -1,0 +1,19 @@
+-- File demonstrating missing function argument
+
+import Type ;;
+import Nat ;;
+import NConst ;;
+
+add : NatT -> NatT -> NatT ;
+add (nt1 : NatT) (nt2 : NatT) (N : Type) (z : N) (s : (N -> N)) = 
+    let n1 : N ;
+        n1 = nt1 N z s ;;
+        n2 : N ;
+        n2 = nt2 N n1 s ;;
+    in  n2 ;;
+
+one : NatT ;
+one = add zero ;;  -- we miss the second argument here
+
+main : N ;
+main = one N Z S ;;

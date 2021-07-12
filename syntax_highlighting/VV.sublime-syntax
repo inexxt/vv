@@ -1,0 +1,102 @@
+%YAML 1.2
+---
+
+name: vv
+file_extensions: [vv, vvm]
+scope: vv_source
+
+contexts:
+  operators:
+    - match: ;;
+      scope: punctuation.terminator.end
+
+    - match: ->
+      scope: keyword.operator
+
+    - match: (:)
+      scope: keyword.operator
+
+    - match: Pi
+      scope: keyword.operator
+
+    - match: Lam
+      scope: keyword.operator
+    
+    - match: =
+      scope: keyword.operator
+
+  terminators:
+    - match: \s;$
+      pop: true
+  
+  comments:
+    - match: --.*$
+      scope: comment.line
+
+  imports:
+    - match: ^(import)\s(\w+)\s(;;)$
+      captures: 
+        1: keyword.control.import
+        2: module
+        3: punctuation.terminator
+
+  function-type:
+    - match: ^(\w+)\s(:)\s
+      captures: 
+        1: variable.function
+        2: punctuation.separator
+      push: type
+  
+  type-judgement:
+    - match: \((\w+)\s(:)\s(.+?)\)
+      captures: 
+        1: variable.language
+        2: punctuation.separator
+        3: entity.type
+  
+  function-definition:
+    - include: type-judgement
+    - match: ^(\w+)\s
+      captures:
+        1: variable.function
+
+  constant-num:
+    - match: \b([0-9]*)\b
+      scope: constant.numeric
+
+  type:
+    - include: type-judgement
+    - include: operators
+    - include: constant-num
+    - include: terminators
+    - include: comments
+  
+  let-begin:
+    - match: (let)\s
+      scope: keyword.operator
+      push: let
+
+  let-end:
+    - match: (in)\s
+      scope: keyword.operator
+      pop: true
+
+  let:
+    - include: type-judgement
+    - include: operators
+    - include: constant-num
+    - include: terminators
+    - include: comments
+    - include: function-definition
+    - include: function-type
+
+  main:
+    - include: operators
+    - include: imports
+    - include: function-type
+    - include: function-definition
+    - include: constant-num
+    - include: terminators
+    - include: comments
+    - include: let-begin
+    - include: let-end

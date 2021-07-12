@@ -1,0 +1,61 @@
+-- Standard library file defining the arithmetic on natural numbers
+
+import Type ;;
+import Bool ;;
+import Nat ;;
+import Pair ;;
+
+add : NatT -> NatT -> NatT ;
+add (nt1 : NatT) (nt2 : NatT) (N : Type) (z : N) (s : (N -> N)) = 
+    let n1 : N ;
+        n1 = nt1 N z s ;;
+        n2 : N ;
+        n2 = nt2 N n1 s ;;
+    in  n2 ;;
+
+pred : NatT -> NatT ;
+pred (nt : NatT) (N : Type) (z : N) (s : (N -> N)) =
+    let TT : U 1 ;
+        -- predecessor operates on pairs of natural numbers
+        TT = PairT N N ;;
+        
+        start : TT ;
+        -- we're starting from a pair (0, 0)
+        start = pair N N z z ;;
+        
+        ind : TT -> TT ;
+        -- then, transform pair (a, b) into a pair (b, s b)
+        ind (pp : TT) = 
+        	let relem : N ;
+        	    relem = right N N pp ;;
+        	in  pair N N relem (s relem) ;;
+    
+    -- finally, transforming the starting pair n times and taking left
+    in  left N N (nt TT start ind) ;;
+
+-- sub nt1 nt2 means nt1 - nt2
+sub : NatT -> NatT -> NatT ;
+sub (nt1 : NatT) (nt2 : NatT) (N : Type) (z : N) (s : (N -> N)) = (nt2 NatT nt1 pred) N z s ;;
+
+times : NatT -> NatT -> NatT ;
+times (nt1 : NatT) (nt2 : NatT) (N : Type) (z : N) (s : (N -> N)) = 
+    let n2 : N ;
+        n2 = nt2 N z (Lam (x : N) (nt1 N x s)) ;;
+    in  n2 ;;
+
+testZero : NatT -> BoolT ;
+testZero (nt1 : NatT) (tt : Type) (b1 : tt) (b2 : tt) = nt1 tt b1 (Lam (c : tt) b2) ;;
+
+-- geq nt1 nt2 means 'nt1 >= nt2'
+geq : NatT -> NatT -> BoolT ;
+geq (nt1 : NatT) (nt2 : NatT) =
+    testZero (sub nt2 nt1) ;;
+
+-- leq nt1 nt2 means 'nt1 <= nt2'
+leq : NatT -> NatT -> BoolT ;
+leq (nt1 : NatT) (nt2 : NatT) =
+    testZero (sub nt1 nt2) ;;
+
+testEq : NatT -> NatT -> BoolT ;
+testEq (nt1 : NatT) (nt2 : NatT) =
+    and (geq nt1 nt2) (leq nt1 nt2) ;;

@@ -1,0 +1,40 @@
+Program    . Program  ::= [Import] [Definition] ;
+
+terminator Import ";;" ;
+Import . Import ::= "import" Ident;
+
+Let  . ExprE   ::= "let" [Definition] "in" ExprE;
+LamE . ExprE   ::= "Lam" TypeJudgement2 ExprE;
+Arr  . ExprE   ::= ExprE1 "->" ExprE;
+AppE . ExprE   ::= ExprE " " ExprE1;
+UE   . ExprE   ::= "U" Integer;
+PiE  . ExprE   ::= "Pi" TypeJudgement2 ExprE;
+
+
+PiE  . ExprE   ::= "Forall" TypeJudgement2 ExprE;
+PiE  . ExprE   ::= "∀" TypeJudgement2 ExprE;
+LamE . ExprE   ::= "λ " TypeJudgement2 "→" ExprE;
+LamE . ExprE   ::= "\\ " TypeJudgement2 "->" ExprE;
+PiE  . ExprE   ::= TypeJudgement2 "→" ExprE;
+PiE  . ExprE   ::= TypeJudgement2 "->" ExprE;
+Arr  . ExprE   ::= ExprE1 "→" ExprE;
+
+VarE  . ExprE2 ::= Ident;
+_.      ExprE2 ::= "(" ExprE ")" ;
+_.      ExprE1 ::= ExprE2 ;
+_.      ExprE  ::= ExprE1 ;
+
+
+terminator nonempty Definition ";;" ;
+-- DefE   . Definition ::= "define" Equation;
+DefT   . Definition ::= "assume" TypeJudgement;
+DefTE  . Definition ::= TypeJudgement ";" Equation;
+
+Eq . Equation ::= Ident [TypeJudgement2] "=" ExprE;
+
+separator TypeJudgement2 " ";
+DefType . TypeJudgement  ::= Ident ":" ExprE;
+_       . TypeJudgement2 ::= "(" TypeJudgement ")";
+
+
+comment    "--" ;

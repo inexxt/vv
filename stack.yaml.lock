@@ -32,6 +32,13 @@ packages:
       sha256: 7f98d4c069705861b7c52ad36b51cf8c1718c11c8440e54c9a46a11c62847743
   original:
     hackage: BNFC-2.9.0
+- completed:
+    hackage: transformers-0.5.6.2@sha256:6c959d14430f4deffb99579ba019de07c3d852a2122b6f449344386c7d75ff1d,3172
+    pantry-tree:
+      size: 2512
+      sha256: c79246ba7d61392c2f214376fed3c2a05e4b2649b93ec2c849a86493f278ace0
+  original:
+    hackage: transformers-0.5.6.2
 snapshots:
 - completed:
     size: 563098

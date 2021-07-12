@@ -1,0 +1,30 @@
+-- Standard library file defining the logical operations
+
+import Type ;;
+
+BoolT : U 1 ;
+BoolT = Pi (B : Type) (Pi (b1 : B) (Pi (b2 : B) B)) ;;
+
+true : BoolT ;
+true (B : Type) (b1 : B) (b2 : B) = b1 ;;
+
+false : BoolT ;
+false (B : Type) (b1 : B) (b2 : B) = b2 ;;
+
+-- non-dependent if
+if : Pi (T : Type) (BoolT -> T -> T -> T) ;
+if (T : Type) (b : BoolT) (x : T) (y : T) = b T x y ;;
+
+not : BoolT -> BoolT ;
+not (bt : BoolT) (B : Type) (b1 : B) (b2 : B) = bt B b2 b1 ;;
+
+and : BoolT -> BoolT -> BoolT ;
+and (bt1 : BoolT) (bt2 : BoolT) (B : Type) (b1 : B) (b2 : B) = 
+    let e1 : B ;
+        e1 = bt1 B b1 b2 ;;
+        e2 : B ;
+        e2 = bt1 B e1 b2 ;;
+    in  e2 ;;
+
+or : BoolT -> BoolT -> BoolT ;
+or (bt1 : BoolT) (bt2 : BoolT) = not (and (not bt1) (not bt2)) ;;

@@ -1,0 +1,30 @@
+-- A program demonstrating the use of laziness
+-- in the context of calculating length of a list
+-- 
+import Type ;;
+import Nat ;;
+import Arith ;;
+import List ;;
+import NConst ;;
+
+one : NatT ;
+one = succ zero ;;
+
+two : NatT ;
+two = succ one ;;
+
+four : NatT ;
+four = times two two ;;
+
+-- notice that we didn't define blabla before
+ll0 : ListT NatT ;
+ll0 = repeat NatT blabla four ;;
+
+lls : NatT ;
+lls = length NatT ll0 ;;
+
+-- but, due to laziness, the list length will be computed correctly = 4
+-- because to calculate length, the interpreter doesn't have to compute
+-- the contents at all
+main : N ;
+main = lls N Z S ;;

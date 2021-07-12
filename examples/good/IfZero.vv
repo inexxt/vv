@@ -1,0 +1,23 @@
+-- Another simple program demonstrating the use of 'if'
+-- We use logical operator testZero to check if one == zero
+-- Since it doesn't, 'if' returns the second argument - one
+
+import Type ;;
+import Bool ;;
+import Nat ;;
+import Arith ;;
+import Pair ;;
+import NConst ;;
+
+one : NatT ;
+one = succ zero ;;
+
+two : NatT ;
+two = succ (succ zero) ;;
+
+-- this would also work
+-- main : N ;
+-- main = (testZero one) N Z (S Z) ;;
+
+main : N ;
+main = (if BoolT (testZero one) true false) N Z (S Z) ;;

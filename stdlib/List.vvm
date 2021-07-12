@@ -1,0 +1,65 @@
+-- Standard library file defining List type and operations
+
+import Type ;;
+import Nat ;;
+import Pair ;;
+
+-- Type defintion
+ListT : (U 0) -> (U 1) ;
+ListT = Lam (T : Type) (Pi (L : Type) (L -> (L -> T -> L) -> L)) ;;
+
+-- Introduction rules
+null : Pi (T : Type) (ListT T) ;
+null (T : Type) (L : Type) (nullL : L) (consL : (L -> T -> L)) = nullL ;;
+
+cons : Pi (T : Type) ((ListT T) -> T -> (ListT T)) ;
+cons (T : Type) (lst : ListT T) (t : T) (L : Type) (nullL : L) (consL : (L -> T -> L)) = 
+	consL (lst L nullL consL) t;;
+
+singleton : Pi (T : Type) (T -> ListT T) ;
+singleton (T : Type) (t : T) = cons T (null T) t ;;
+
+-- Computation inside List
+map : Pi (T : Type) (Pi (Q : Type) ((T -> Q) -> (ListT T) -> (ListT Q))) ;
+map (T : Type) (Q : Type) (f : T -> Q) (lst : ListT T) =
+	let mapCons : (ListT Q) -> T -> (ListT Q) ;
+	    mapCons (lst : ListT Q) (t : T) = cons Q lst (f t) ;;
+	in  lst (ListT Q) (null Q) mapCons ;;
+
+filter : Pi (T : Type) ((T -> BoolT) -> (ListT T) -> (ListT T)) ;
+filter (T : Type) (p : T -> BoolT) (lst : ListT T) =
+	let filterCons : (ListT T) -> T -> (ListT T) ;
+	    filterCons (lst : ListT T) (t : T) = (p t) (ListT T) (cons T lst t) lst ;;
+	in  lst (ListT T) (null T) filterCons ;;
+
+-- Generating lists from natural numbers
+
+-- repeat 5 X generates [X, X, X, X, X]
+repeat : Pi (T : Type) (T -> NatT -> ListT T) ;
+repeat (T : Type) (t : T) (nt : NatT) = 
+	nt (ListT T) (null T) (Lam (l : ListT T) (cons T l t)) ;;
+
+-- seq 5 generates [0, 1, 2, 3, 4]
+seq : NatT -> ListT NatT ;
+seq (nt : NatT) =
+	let LT : U 1 ;
+	    LT = ListT NatT ;;
+	    consNat : (PairT NatT LT) -> (PairT NatT LT) ;
+	    consNat (p : PairT NatT LT) =
+	    	let lp : NatT ;
+	    	    lp = left NatT LT p ;;
+	    	    rp : LT ;
+	    	    rp = right NatT LT p ;;
+	    	in  pair NatT LT (succ lp) (cons NatT rp lp) ;;
+	    pairNL : PairT NatT LT ;
+	    pairNL = nt (PairT NatT LT) (pair NatT LT zero (null NatT)) consNat ;;
+	in  right NatT LT pairNL ;;
+
+
+-- Elimination rule
+fold : Pi (T : Type) (Pi (Q : Type) ((ListT T) -> Q -> (Q -> T -> Q) -> Q)) ;
+fold (T : Type) (Q : Type) (lst : ListT T) = lst Q ;;
+
+length : Pi (T : Type) ((ListT T) -> NatT) ;
+length (T : Type) (lst : (ListT T)) = 
+	fold T NatT lst zero (Lam (n : NatT) (Lam (t : T) (succ n))) ;;

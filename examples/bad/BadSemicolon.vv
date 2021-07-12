@@ -1,0 +1,6 @@
+-- A program demonstrating the missing semicolon
+
+import Type ;;
+
+main : U 2 ;
+main = U 1

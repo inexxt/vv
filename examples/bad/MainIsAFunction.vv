@@ -1,0 +1,6 @@
+-- A program demonstrating the case when 'main' is not a atomic value
+
+import Type ;;
+
+main : (U 1) -> (U 1) ;
+main (u : U 1) = u ;;

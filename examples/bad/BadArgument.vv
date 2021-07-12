@@ -1,0 +1,12 @@
+-- A program demonstrating argument of a bad type
+
+import Type ;;
+import Nat ;;
+import Arith ;;
+import NConst ;;
+
+one : NatT ;
+one = succ zero ;;
+
+main : N ;
+main = one N S S ;; -- should be N Z S

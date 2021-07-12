@@ -1,0 +1,38 @@
+-- A program demonstrating the use of defining functions on lists using fold
+
+import Type ;;
+import Nat ;;
+import Arith ;;
+import Option ;;
+import Empty ;;
+import Union ;;
+import List ;;
+import NConst ;;
+
+one : NatT ;
+one = succ zero ;;
+
+two : NatT ;
+two = succ one ;;
+
+three : NatT ;
+three = succ two ;;
+
+-- This is a list [0, 1, 2]
+ll : ListT NatT ;
+ll = seq three ;;
+
+-- This is a list [1, 2, 3]
+llPlusOne : ListT NatT ;
+llPlusOne = map NatT NatT (add one) ll ;;
+
+-- We're defining sum using fold
+listSum : (ListT NatT) -> NatT ;
+listSum (l : (ListT NatT)) = fold NatT NatT l zero add ;;
+
+-- So, the sum should 1 + 2 + 3 = 6
+lls : NatT ;
+lls = listSum llPlusOne ;;
+
+main : N ;
+main = lls N Z S ;;

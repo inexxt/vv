@@ -1,0 +1,28 @@
+-- A program demonstrating how we could do arithmetic in vv
+-- We can check that the program prints 81 S-es, as expected
+
+import Type ;;
+import Nat ;;
+import Arith ;;
+import NConst ;;
+
+one : NatT ;
+one = succ zero ;;
+
+two : NatT ;
+two = succ (succ zero) ;;
+
+four : NatT ;
+four = add two two ;;
+
+five : NatT ;
+five = add one four ;;
+
+nine : NatT ;
+nine = add four five ;;
+
+eightyOne : NatT ;
+eightyOne = times nine nine ;;
+
+main : N ;
+main = eightyOne N Z S ;;

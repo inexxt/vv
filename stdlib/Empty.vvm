@@ -1,0 +1,13 @@
+-- Standard library file defining empty type
+
+import Type ;;
+
+-- Type defintion
+EmptyT : U 1 ;
+EmptyT = Pi (T : Type) T ;;
+
+-- There's no intruduction rule
+
+-- Elimination rule
+absurd : EmptyT -> (Pi (T : Type) T) ;
+absurd (e : EmptyT) (T : Type) = e T ;;

@@ -1,0 +1,5 @@
+-- A program demonstrating missing 'main' defintion
+
+import Type ;;
+
+assume main : U 2 ;;

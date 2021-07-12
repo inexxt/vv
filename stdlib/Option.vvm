@@ -1,0 +1,19 @@
+-- Standard library file defining Option type, via Church encoding
+
+import Type ;;
+
+-- Type defintion
+OptionT : U 1 ;
+OptionT = Pi (T : Type) (Pi (O : Type) (O -> (T -> O) -> O)) ;;
+
+-- Introduction rules
+just : Pi (T : Type) (T -> OptionT T) ;
+just (T : Type) (t : T) (O : Type) (empty : O) (insert : (T -> O)) = insert t ;;
+
+empty : Pi (T : Type) (OptionT T) ;
+empty (T : Type) (t : T) (O : Type) (empty : O) (insert : (T -> O)) = empty ;;
+
+-- computation inside Option
+fmap : Pi (T : Type) (Pi (Q : Type) (T -> Q) -> (OptionT T) -> (OptionT Q)) ;
+fmap (T : Type) (Q : Type) (f : T -> Q) (opt : OptionT T) (O : Type) (empty : O) (insert : (T -> O)) =
+	opt O empty (Lam (q : Q) (insert (f q))) ;;

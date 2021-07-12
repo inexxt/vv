@@ -1,0 +1,6 @@
+-- A program demonstrating the incorrect import
+
+import Blabla ;;
+
+main : U 2 ;
+main = U 1 ;;

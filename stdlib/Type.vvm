@@ -1,0 +1,7 @@
+-- Standard library file defining Type and Kind as the first two levels of universe hierarchy
+
+Kind : U 2 ;
+Kind = U 1 ;;
+
+Type : Kind ;
+Type = U 0 ;;

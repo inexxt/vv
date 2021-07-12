@@ -1,0 +1,15 @@
+-- File demonstrating incorrect let statement
+
+import Type ;;
+import Nat ;;
+
+add : NatT -> NatT -> NatT ;
+add (nt1 : NatT) (nt2 : NatT) (N : Type) (z : N) (s : (N -> N)) = 
+    let n1 : N ;
+        n1 = nt1 N z s ;;
+        n2 : N ;
+        n2 = nt2 N n1 s ;;
+    n2 ;;
+
+main : U 2 ;
+main = U 1 ;;

@@ -4,16 +4,16 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 9fc59f0253b68cef5d78686c9eba8a839e8da6adeb0ff98118b3de872989aed2
+-- hash: 45207d348f4c197320841d49ca9e7d2a217c4b3d10cf466328468d9d2bb0eb02
 
 name:           vv
 version:        0.1.0.0
 description:    Please see the README on GitHub at <https://github.com/githubuser/vv#readme>
 homepage:       https://github.com/githubuser/vv#readme
 bug-reports:    https://github.com/githubuser/vv/issues
-author:         Author name here
-maintainer:     example@example.com
-copyright:      2021 Author name here
+author:         Jacek Karwowski
+maintainer:     jac.karwowski@gmail.com
+copyright:      2021 Jacek Karwowski
 license:        BSD3
 license-file:   LICENSE
 build-type:     Simple
@@ -27,15 +27,31 @@ source-repository head
 
 library
   exposed-modules:
-      Lambda.SimplyTyped
-      Lambda.Untyped
-      Lib
+      App
+      Desugar
+      Imports
+      Config
+      Err
+      Eval
+      Parsing
+      Parser.AbsVVSyntax
+      Parser.ErrM
+      Parser.LexVVSyntax
+      Parser.ParVVSyntax
+      Parser.PrintVVSyntax
+      Parser.SkelVVSyntax
+      PrettyPrinter
+      Typechecking
   other-modules:
       Paths_vv
   hs-source-dirs:
       src
   build-depends:
-      base >=4.7 && <5
+      array >=0.5.4.0
+    , base >=4.7 && <5
+    , mtl >=2.2.2
+    , transformers >= 0.5.6.2
+    , filepath >= 1.4.2.1
   default-language: Haskell2010
 
 executable vv-exe
@@ -46,7 +62,11 @@ executable vv-exe
       app
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      base >=4.7 && <5
+      array >=0.5.4.0
+    , base >=4.7 && <5
+    , mtl >=2.2.2
+    , transformers >= 0.5.6.2
+    , filepath >= 1.4.2.1
     , vv
   default-language: Haskell2010
 
@@ -54,15 +74,16 @@ test-suite vv-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
-      Lambda.SimplyTypedSpec
-      Lambda.UntypedSpec
+      TypecheckingSpec
       SpecHelper
       Paths_vv
   hs-source-dirs:
       test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      base >=4.7 && <5
+      array >=0.5.4.0
+    , base >=4.7 && <5
     , hspec
+    , mtl >=2.2.2
     , vv
   default-language: Haskell2010

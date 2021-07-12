@@ -1,0 +1,31 @@
+-- A program demonstrating the use list generators and 'map'
+
+import Type ;;
+import Nat ;;
+import Arith ;;
+import List ;;
+import NConst ;;
+
+one : NatT ;
+one = succ zero ;;
+
+two : NatT ;
+two = succ one ;;
+ 
+four : NatT ;
+four = times two two ;;
+
+-- This is a list [0, 1, 2, 3]
+ll : ListT NatT ;
+ll = seq four ;;
+
+-- This is a list [2, 3, 4, 5]
+llPlusTwo : ListT NatT ;
+llPlusTwo = map NatT NatT (add two) ll ;;
+
+llConcrete : ListT N ;
+llConcrete = map NatT N (Lam (nt : NatT) (nt N Z S)) llPlusTwo ;;
+
+-- we should get the result [2, 3, 4, 5] printed here
+main : N ;
+main = llConcrete LL e c ;;

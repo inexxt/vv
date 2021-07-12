@@ -1,0 +1,29 @@
+-- A program demonstrating the use of lists in a sligtly more advanced setting
+-- involving 'repeat' and 'length'
+
+import Type ;;
+import Nat ;;
+import Arith ;;
+import List ;;
+import NConst ;;
+
+one : NatT ;
+one = succ zero ;;
+
+two : NatT ;
+two = succ one ;;
+
+four : NatT ;
+four = times two two ;;
+
+-- this is a list [2, 2, 2, 2]
+ll0 : ListT NatT ;
+ll0 = repeat NatT two four ;;
+
+-- So, the length should be 4
+lls : NatT ;
+lls = length NatT ll0 ;;
+
+-- checking that it is 4 indeed
+main : N ;
+main = lls N Z S ;;

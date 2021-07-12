@@ -1,0 +1,12 @@
+-- Standard library file defining Natural numbers, via Church encoding
+
+import Type ;;
+
+NatT : U 1 ;
+NatT = Pi (N : Type) (N -> ((N -> N) -> N)) ;;
+
+zero : NatT ;
+zero (N : Type) (z : N) (s : (N -> N)) = z ;;
+
+succ : NatT -> NatT ;
+succ (nt : NatT) (N : Type) (z : N) (s : (N -> N)) = nt N (s z) s ;;

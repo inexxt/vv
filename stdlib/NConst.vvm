@@ -1,0 +1,13 @@
+-- Standard library file defining some repeatedly used constants for abstract types
+
+import Type ;;
+
+-- Peano construction for natural numbers
+assume N : Type ;; -- type of natural numbers
+assume Z : N ;; -- zero
+assume S : N -> N ;; -- successor
+
+-- Similarly, inductive construction for lists
+assume LL : Type ;; -- list type
+assume e : LL ;; -- empty list
+assume c : (LL -> (N -> LL)) ;; -- cons

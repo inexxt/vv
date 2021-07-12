@@ -1,0 +1,21 @@
+-- Standard library file defining binary sum type, via Church encoding
+
+
+import Type ;;
+import Pair ;;
+
+-- Type defintion
+UnionT : U 1 ;
+UnionT = Pi (T : Type) (Pi (TL : Type) (Pi (TR : Type) (PairT (TL -> T) (TR -> T)))) ;;
+
+-- Introduction rule
+union : UnionT ;
+union (T : Type) (TL : Type) (TR : Type) (inl : TL -> T) (inr : TR -> T) = pair (TL -> T) (TR -> T) inl inr ;;
+
+-- Elimination rule
+inl : Pi (T : Type) (Pi (TL : Type) (Pi (TR : Type) ((UnionT T TL TR) -> TL -> T))) ;
+inl (T : Type) (TL : Type) (TR : Type) (u : UnionT T TL TR) (l : TL) = (left (TL -> T) (TR -> T) u) l ;;
+
+-- Elimination rule
+inr : Pi (T : Type) (Pi (TL : Type) (Pi (TR : Type) ((UnionT T TL TR) -> TR -> T))) ;
+inr (T : Type) (TL : Type) (TR : Type) (u : UnionT T TL TR) (r : TR) = (right (TL -> T) (TR -> T) u) r ;;

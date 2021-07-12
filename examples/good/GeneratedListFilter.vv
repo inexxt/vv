@@ -1,0 +1,35 @@
+-- A program demonstrating the use list generators and 'filter'
+-- Unfortunately, 'filter' is extremely slow:
+-- predicates on natural numbers use substraction, which is extremely inefficient
+-- (for details, look at 'sub' in Arith.vvm)
+-- So the execution of this script takes about 15 minutes
+
+import Type ;;
+import Nat ;;
+import Arith ;;
+import List ;;
+import NConst ;;
+
+one : NatT ;
+one = succ zero ;;
+
+two : NatT ;
+two = succ one ;;
+ 
+four : NatT ;
+four = times two two ;;
+
+-- This is a list [0, 1, 2, 3]
+ll : ListT NatT ;
+ll = seq four ;;
+
+-- This is a list [0, 1, 2]
+llGeqTwo : ListT NatT ;
+llGeqTwo = filter NatT (geq two) ll ;;
+
+llConcrete : ListT N ;
+llConcrete = map NatT N (Lam (nt : NatT) (nt N Z S)) llGeqTwo ;;
+
+-- we should get the result [0, 1, 2] printed here
+main : N ;
+main = llConcrete LL e c ;;
