@@ -80,3 +80,4 @@ There's a few things that don't work (yet, or in general):
 
 ## Reference
 The code is heavily inspired by a series of articles on dependent types by https://augustss.blogspot.com/.
+It was written as a final project for "Programming Languages and Paradigmes" course @MIMUW, 2021. 
