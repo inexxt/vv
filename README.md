@@ -1,7 +1,7 @@
 # vv
 
 `vv` is a functional language with dependent types - essentially, implementation of the Calculus of Constructions. 
-It comes with built-in dependent products and universes, and only then the standard library implements all of the required functionality, such as numbers, arithmetic, logical operators, products, sums, lists, empty type, Option etc. Thus, there is a very simple core language with well-understood behaviour, but powerful enough as to not need the implementation of these all features in the core. All typechecking programs written in `vv` terminate.
+It comes with built-in dependent products and universes, and only then the standard library implements all other features such as numbers, arithmetic, logical operators, products, sums, lists, empty type, Option etc. Thus, we have a very simple core language with well-understood behaviour, but powerful enable writing all these in the userspace. All typechecking programs written in `vv` terminate.
 
 ## Modules
 Code that is to be imported should have `.vvm` extension. Code that implements `main` should have `.vv` extension. You cannot import `main` from somewhere else.
